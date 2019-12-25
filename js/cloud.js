@@ -12,12 +12,12 @@ function init(){
         var keyID = e.keyCode ? e.keyCode :e.which;
         if(keyID === 37){
             img.src = "/img/shopleft.png";
-            shop.x -= 30;
+            shop.x -= 50;
            
         
         }  else if(keyID === 39){
             img.src = "/img/shopright.png";
-            shop.x += 30;
+            shop.x += 50;
        
  
         } 
@@ -44,11 +44,11 @@ function init(){
    imgC.src = "/img/candy.png";
     var candy1 = new createjs.Bitmap(imgC);
     candy1.x = randomNum(20,1200);
-    candy1.y = -600;
+    candy1.y = -800;
 
     function candy1Move(){
 
-        candy1.y += 25;
+        candy1.y += 30;
         if(candy1.y>700){
             candy1.y = 0;
             candy1.x = randomNum(20,1200);
@@ -58,11 +58,11 @@ function init(){
     imgC1.src = "/img/candy1.png";
     var candy = new createjs.Bitmap(imgC1);
     candy.x = randomNum(20,1200);
-    candy.y = -500;
+    candy.y = -600;
 
     function candyMove(){
 
-        candy.y += 25;
+        candy.y += 30;
         if(candy.y>700){
             candy.y = 0;
             candy.x = randomNum(20,1200);
@@ -72,11 +72,11 @@ function init(){
     imgC2.src = "/img/candy2.png";
     var candy2 = new createjs.Bitmap(imgC2);
     candy2.x = randomNum(20,1200);
-    candy2.y = -100;
+    candy2.y = -300;
 
     function candy2Move(){
 
-        candy2.y += 25;
+        candy2.y += 30;
         if(candy2.y>700){
             candy2.y = 0;
             candy2.x = randomNum(20,1200);
@@ -86,11 +86,11 @@ function init(){
     imgC3.src = "/img/candy3.png";
     var candy3 = new createjs.Bitmap(imgC3);
     candy3.x = randomNum(20,1200);
-    candy3.y = -20;
+    candy3.y = 0;
 
     function candy3Move(){
 
-        candy3.y += 25;
+        candy3.y += 30;
         if(candy3.y>700){
             candy3.y = 0;
             candy3.x = randomNum(20,1200);
@@ -102,10 +102,10 @@ function init(){
    
     var bomb = new createjs.Bitmap("/img/bomb.png");
     bomb.x = randomNum(20,1200);
-    bomb.y = -290;
+    bomb.y = -100;
 
     function bombMove(){
-        bomb.y += 25;
+        bomb.y += 30;
         if (bomb.y > 700){
             bomb.y =0;
             bomb.x = randomNum(20, 1200);
@@ -117,7 +117,7 @@ function init(){
     bomb1.y = -400;
 
     function bomb1Move(){
-        bomb1.y += 25;
+        bomb1.y += 30;
         if (bomb1.y > 700){
             bomb1.y =0;
             bomb1.x = randomNum(20, 1200);
@@ -171,14 +171,8 @@ function init(){
        window.location.href= "/html/tree.html";
     });
    
-    var note = new createjs.Text("score: 0", "25px Arial", "black");
-    note.x = 1280;
-    note.y = 500;
-    function showScore(){
-      
-      note.text = "Score: "+ Math.floor(score/4);
-   
-    }
+    
+    
     function randomNum(min, max){
         return Math.floor(Math.random()*(max - min)) + min;
     }
@@ -192,6 +186,7 @@ function init(){
 
     stage.addChild(start);
     stage.addChild(shop);
+    
     stage.addChild(candy1);
     stage.addChild(candy);
     stage.addChild(candy2);

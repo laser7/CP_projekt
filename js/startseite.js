@@ -2,30 +2,38 @@
 var stage;
 function init(){
     canvas = document.getElementById("canvas");
-      
-    stage = new createjs.Stage('canvas');
     
- 
+   
+    
+    stage = new createjs.Stage('canvas');
+   
     var rect1 = new createjs.Shape();
     rect1.graphics.beginFill(" #ebf5fb ").drawRect(0, 0, 400, 400);
     rect1.x = 100;
     rect1.y =50;
+    rect1.focus = false;
     rect1.addEventListener("click",function(e){
         window.location.href= "/html/tree.html";
     });
+
+   
 
     var rect2 = new createjs.Shape();
     rect2.graphics.beginFill(" #ebf5fb ").drawRect(0, 0, 400, 400);
     rect2.x = 550;
     rect2.y =50;
+    rect2.focus = false;
     rect2.addEventListener("click",function(e){
         window.location.href= "/html/moutain.html";
     });
+
+
 
     var rect3 = new createjs.Shape();
     rect3.graphics.beginFill(" #ebf5fb ").drawRect(0, 0, 400, 400);
     rect3.x = 1000;
     rect3.y =50;
+    rect3.focus = false;
     rect3.addEventListener("click",function(e){
         window.location.href= "/html/windmill.html";
     });
@@ -47,7 +55,7 @@ function init(){
     thema3.x = 1075;
     thema3.y = 130;
     thema3.addEventListener("click",function(e){
-        window.location.href= "/html/windmill.html";
+        window.location.href= "/html/shooting.html";
     });
     var bubble= new createjs.Bitmap("/img/bubble.png");
     bubble.x = 580;
@@ -64,9 +72,10 @@ function init(){
     dialog2.x = 650;
     dialog2.y = 640;
   
-  
-  
-   
+
+
+
+
     stage.addChild(rect1);
     stage.addChild(rect2);
     stage.addChild(rect3);
@@ -77,6 +86,7 @@ function init(){
     stage.addChild(leo);
     stage.addChild(dialog);
     stage.addChild(dialog2);
+
 
 
     
