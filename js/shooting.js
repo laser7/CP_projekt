@@ -159,7 +159,7 @@ function init(){
       });
       var hard = new createjs.Bitmap("/img/hard.jpg");
       hard.x = 430;
-      hard.y = 470;
+      hard.y = 450;
       hard.addEventListener('click',function(e){
         swal("game mode has changed","hard mode");
           speed = 10;

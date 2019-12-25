@@ -35,7 +35,7 @@ function init(){
     rect3.y =50;
     rect3.focus = false;
     rect3.addEventListener("click",function(e){
-        window.location.href= "/html/windmill.html";
+        window.location.href= "/html/shooting.html";
     });
 
 
