@@ -25,23 +25,7 @@ function init(){
     var target = new createjs.Bitmap("/img/target.png");
     target.x = 450;
     target.y = 450;
-    window.addEventListener('keydown',keyOper, true);
-    function keyOper(e){
-        var keyID = e.keyCode ? e.keyCode :e.which;
-        if(keyID === 37){
-            target.x -= 50;
-        }  else if(keyID === 39){
-          target.x += 50;
-      
-        } else if(keyID == 38){
-            target.y -= 40;
-        }else if(keyID == 40){
-            target.y += 40;
-        } else if (keyID == 13){
-            shootTest();
-        }
-    }
-
+    
 
     var dataMonster = new createjs.SpriteSheet({
         "images": ["/img/monster.png"],
@@ -128,11 +112,7 @@ function init(){
             ship.x = randomNum(50, 900);
         }
       }
-
-      var start = new createjs.Bitmap("/img/start.jpg");
-      start.x = 430;
-      start.y = 250;
-      start.addEventListener('click',function(e){
+      function gameStart(){
         startSeite.visible = false;  
         playSeite.visible = true;
           var timer = window.setInterval(monsterMove,100);
@@ -140,8 +120,65 @@ function init(){
           var timer2 = window.setInterval(rockMove,100);
           var timer3 = window.setInterval(shipMove,100);
           var timercScore= window.setInterval(showScore,500);
+
+      }
+
+      var start = new createjs.Bitmap("/img/start.jpg");
+      start.x = 430;
+      start.y = 250;
+      start.addEventListener('click',function(e){
+       gameStart();
+
+
        
       });
+      window.addEventListener('keydown',keyOper, true);
+      function keyOper(e){
+        var keyID = e.keyCode ? e.keyCode :e.which;
+        if(keyID === 37){
+            target.x -= 50;
+        }  else if(keyID === 39){
+          target.x += 50;
+      
+        } else if(keyID == 38){
+            target.y -= 40;
+        }else if(keyID == 40){
+            target.y += 40;
+        } else if (keyID == 32){
+            shootTest();
+        }
+    }
+
+      window.addEventListener("keydown",function(e){
+        var keyID = e.keyCode ? e.keyCode :e.which;
+        if(keyID === 39){
+            startFocus();
+        }
+    });
+
+      var outline1 = new createjs.Shape();
+      outline1.graphics.beginStroke('yellow').drawRect(0,0,86,30);
+      outline1.x= 430;
+      outline1.y = 250;
+      outline1.visible = false;
+
+      function startFocus(){
+        outline1.visible = true;
+        outline2.visible = false;
+        outline3.visible = false;
+        outline4.visible = false;
+        outline5.visible = false;
+        window.addEventListener("keydown",function(e){
+            var keyID = e.keyCode ? e.keyCode :e.which;
+            if(keyID === 13){
+             gameStart();
+            } else if(keyID === 39){
+                easyFocus();
+            } else if(keyID === 37){
+                infoFocus();
+            }
+        });
+    }
 
       var easy = new createjs.Bitmap("/img/easy.jpg");
       easy.x = 430;
@@ -150,6 +187,31 @@ function init(){
           swal("game mode has changed","easy mode");
           speed = 2;
       });
+
+      var outline2 = new createjs.Shape();
+      outline2.graphics.beginStroke('yellow').drawRect(0,0,86,30);
+      outline2.x= 430;
+      outline2.y = 330;
+      outline2.visible = false;
+
+      function easyFocus(){
+        outline2.visible = true;
+        outline1.visible = false;
+        outline3.visible = false;
+        outline4.visible = false;
+
+        window.addEventListener("keydown",function(e){
+          var keyID = e.keyCode ? e.keyCode :e.which;
+          if(keyID === 13){
+            swal("game mode has changed","easy mode");
+            speed = 2;
+            
+          } else if(keyID === 39){
+              mediumFocus();
+          } 
+      });
+      }
+  
       var medium = new createjs.Bitmap("/img/medium.jpg");
       medium.x = 430;
       medium.y = 390;
@@ -157,14 +219,93 @@ function init(){
         swal("game mode has changed","medium mode");
           speed = 5;
       });
+      var outline3 = new createjs.Shape();
+      outline3.graphics.beginStroke('yellow').drawRect(0,0,86,30);
+      outline3.x= 430;
+      outline3.y = 390;
+      outline3.visible = false;
+
+      function mediumFocus(){
+        outline3.visible = true;
+        outline1.visible = false;
+        outline2.visible = false;
+        outline4.visible = false;
+
+        window.addEventListener("keydown",function(e){
+          var keyID = e.keyCode ? e.keyCode :e.which;
+          if(keyID === 13){
+            swal("game mode has changed","medium mode");
+            speed = 5;
+            
+          } else if(keyID === 39){
+              hardFocus();
+          } 
+      });
+      }
+
+
       var hard = new createjs.Bitmap("/img/hard.jpg");
       hard.x = 430;
       hard.y = 450;
       hard.addEventListener('click',function(e){
         swal("game mode has changed","hard mode");
-          speed = 10;
+          speed = 9;
       });
-     
+      var outline4 = new createjs.Shape();
+      outline4.graphics.beginStroke('yellow').drawRect(0,0,86,30);
+      outline4.x= 430;
+      outline4.y = 450;
+      outline4.visible = false;
+
+      function hardFocus(){
+        outline4.visible = true;
+        outline1.visible = false;
+        outline2.visible = false;
+        outline3.visible = false;
+
+        window.addEventListener("keydown",function(e){
+          var keyID = e.keyCode ? e.keyCode :e.which;
+          if(keyID === 13){
+            swal("game mode has changed","hard mode");
+            speed = 9;
+            
+          } else if(keyID === 39){
+              infoFocus();
+          } 
+      });
+      }
+
+       var info = new createjs.Bitmap("/img/info.png");
+       info.x = 430;
+       info.y = 520;
+       info.addEventListener('click',function(e){
+        swal("Spielregeln","Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen");
+       });
+
+       var outline5 = new createjs.Shape();
+       outline5.graphics.beginStroke('yellow').drawRect(0,0,86,30);
+       outline5.x= 430;
+       outline5.y = 520;
+       outline5.visible = false;
+
+       function infoFocus(){
+        outline5.visible = true;
+        outline1.visible = false;
+        outline2.visible = false;
+        outline3.visible = false;
+        outline4.visible = false;
+        window.addEventListener("keydown",function(e){
+          var keyID = e.keyCode ? e.keyCode :e.which;
+          if(keyID === 13){
+            swal("Spielregeln","Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen");
+            
+          } else if(keyID === 39){
+              startFocus();
+          } 
+      });
+      }
+
+
       function randomNum(min, max){
         return Math.floor(Math.random()*(max - min)) + min;
     }
@@ -219,9 +360,15 @@ function init(){
     }
     stage.addChild(bg);
     startSeite.addChild(start);
+    startSeite.addChild(outline1);
     startSeite.addChild(easy);
+    startSeite.addChild(outline2);
     startSeite.addChild(medium);
+    startSeite.addChild(outline3);
     startSeite.addChild(hard);
+    startSeite.addChild(outline4);
+    startSeite.addChild(info);
+    startSeite.addChild(outline5);
     playSeite.addChild(note);
     playSeite.addChild(monster);
     playSeite.addChild(monster1);
