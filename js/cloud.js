@@ -7,7 +7,7 @@ function init(){
     var shop = new createjs.Bitmap(img);
     shop.x = 400;
     shop.y = 650;
-    window.addEventListener('keydown',keyOper, true);
+   window.addEventListener('keydown',keyOper, true);
     function keyOper(e){
         var keyID = e.keyCode ? e.keyCode :e.which;
         if(keyID === 37){
@@ -24,7 +24,7 @@ function init(){
     }
 
     var start = new createjs.Bitmap("/img/start1.png");
-    start.x = 1300;
+    start.x = 1290;
     start.y = 50;
     start.addEventListener('click',function(e){
         var timer = window.setInterval(candy1Move,500);
@@ -36,17 +36,15 @@ function init(){
         var timerc = window.setInterval(crashTest,500);
         var timercScore= window.setInterval(showScore,500);
      
-    });
-    // falling
+    });  
 
-    // candy
-   var imgC = new Image();
-   imgC.src = "/img/candy.png";
-    var candy1 = new createjs.Bitmap(imgC);
-    candy1.x = randomNum(20,1200);
-    candy1.y = -800;
 
-    function candy1Move(){
+    var imgC = new Image();
+    imgC.src = "/img/candy.png";
+     var candy1 = new createjs.Bitmap(imgC);
+     candy1.x = randomNum(20,1200);
+     candy1.y = 0;
+     function candy1Move(){
 
         candy1.y += 30;
         if(candy1.y>700){
@@ -54,6 +52,7 @@ function init(){
             candy1.x = randomNum(20,1200);
         }
     }
+
     var imgC1 = new Image();
     imgC1.src = "/img/candy1.png";
     var candy = new createjs.Bitmap(imgC1);
@@ -97,8 +96,11 @@ function init(){
         }
     }
 
+    // bomb
 
-    // bumb
+
+
+ // bumb
    
     var bomb = new createjs.Bitmap("/img/bomb.png");
     bomb.x = randomNum(20,1200);
@@ -123,6 +125,9 @@ function init(){
             bomb1.x = randomNum(20, 1200);
         }
     }
+
+
+
     var score = 0;
 
     function crashTest(){
@@ -171,6 +176,14 @@ function init(){
        window.location.href= "/html/tree.html";
     });
    
+    var note = new createjs.Text("score: 0", "25px Arial", "black");
+    note.x = 1300;
+    note.y = 500;
+    function showScore(){
+      
+      note.text = "Score: "+ Math.floor(score/3);
+   
+    }
     
     
     function randomNum(min, max){
@@ -184,18 +197,18 @@ function init(){
         swal("SpielRegeln","avoid the bombs and get more score!");
     });
 
-    stage.addChild(start);
+    stage.addChild(start);   
     stage.addChild(shop);
-    
-    stage.addChild(candy1);
-    stage.addChild(candy);
+  
+   stage.addChild(candy1);
+     stage.addChild(candy);
     stage.addChild(candy2);
     stage.addChild(candy3);
     stage.addChild(bomb1);
     stage.addChild(bomb);
-    stage.addChild(note);
+    stage.addChild(note); 
     stage.addChild(back);
-    stage.addChild(info);
+    stage.addChild(info);  
 
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener('tick',update);
