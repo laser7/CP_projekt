@@ -149,18 +149,19 @@ function init(){
         }
     }
 
-      window.addEventListener("keydown",function(e){
+/*      window.addEventListener("keydown",function(e){
         var keyID = e.keyCode ? e.keyCode :e.which;
         if(keyID === 39){
             startFocus();
         }
-    });
-
-      var outline1 = new createjs.Shape();
+    });  */
+    var outline1 = new createjs.Shape();
       outline1.graphics.beginStroke('yellow').drawRect(0,0,86,30);
       outline1.x= 430;
       outline1.y = 250;
       outline1.visible = false;
+
+   /*   
 
       function startFocus(){
         outline1.visible = true;
@@ -179,7 +180,7 @@ function init(){
             }
         });
     }
-
+*/
       var easy = new createjs.Bitmap("/img/easy.jpg");
       easy.x = 430;
       easy.y = 330;
@@ -194,7 +195,7 @@ function init(){
       outline2.y = 330;
       outline2.visible = false;
 
-      function easyFocus(){
+   /*   function easyFocus(){
         outline2.visible = true;
         outline1.visible = false;
         outline3.visible = false;
@@ -211,7 +212,7 @@ function init(){
           } 
       });
       }
-  
+  */
       var medium = new createjs.Bitmap("/img/medium.jpg");
       medium.x = 430;
       medium.y = 390;
@@ -225,7 +226,7 @@ function init(){
       outline3.y = 390;
       outline3.visible = false;
 
-      function mediumFocus(){
+   /*   function mediumFocus(){
         outline3.visible = true;
         outline1.visible = false;
         outline2.visible = false;
@@ -242,7 +243,7 @@ function init(){
           } 
       });
       }
-
+*/
 
       var hard = new createjs.Bitmap("/img/hard.jpg");
       hard.x = 430;
@@ -257,7 +258,7 @@ function init(){
       outline4.y = 450;
       outline4.visible = false;
 
-      function hardFocus(){
+  /*    function hardFocus(){
         outline4.visible = true;
         outline1.visible = false;
         outline2.visible = false;
@@ -274,7 +275,7 @@ function init(){
           } 
       });
       }
-
+*/
        var info = new createjs.Bitmap("/img/info.png");
        info.x = 430;
        info.y = 520;
@@ -288,7 +289,7 @@ function init(){
        outline5.y = 520;
        outline5.visible = false;
 
-       function infoFocus(){
+   /*    function infoFocus(){
         outline5.visible = true;
         outline1.visible = false;
         outline2.visible = false;
@@ -305,7 +306,7 @@ function init(){
       });
       }
 
-
+*/
       function randomNum(min, max){
         return Math.floor(Math.random()*(max - min)) + min;
     }
@@ -345,7 +346,7 @@ function init(){
         }
       }
 
-      function reshow(){
+  /*    function reshow(){
           monster.visible = true;
       }
 
@@ -357,7 +358,77 @@ function init(){
     }
     function reshow3(){
         ship.visible = true;
-    }
+    }*/
+// keyboard
+   var outline = new createjs.Shape();
+    outline.graphics.beginStroke('#696969').drawRect(0,0,252,601);
+    outline.x= 1050;
+    outline.y = 0;
+   
+    var up = new createjs.Shape();
+    up.graphics.beginFill("#FFFFE0").drawRect(0, 0, 250,120);
+    up.x = 1051;
+    up.y = 1;
+    up.addEventListener("click",function(e){
+      target.y -= 40;
+    });
+    var down = new createjs.Shape();
+    down.graphics.beginFill("#EEE8AA").drawRect(0, 0, 250,120);
+    down.x = 1051;
+    down.y = 361;
+    down.addEventListener("click",function(e){
+      target.y += 40;
+    });
+
+
+    var shoot = new createjs.Shape();
+    shoot.graphics.beginFill("#F0E68C").drawRect(0, 0, 250,119);
+    shoot.x = 1051;
+    shoot.y = 481;
+    shoot.addEventListener("click",function(e){
+      shootTest();
+    });
+    var left = new createjs.Shape();
+    left.graphics.beginFill("#FFEFD5").drawRect(0, 0, 125,240);
+    left.x = 1051;
+    left.y = 121;
+    left.addEventListener("click",function(e){
+      target.x -= 50;
+    });
+    var right = new createjs.Shape();
+    right.graphics.beginFill("#FFDAB9").drawRect(0, 0, 125,240);
+    right.x = 1176;
+    right.y = 121;
+    right.addEventListener("click",function(e){
+      target.x += 50;
+    });
+
+    
+    var arrowU = new createjs.Bitmap("/img/uparrow.png");
+    arrowU.x = 1143;
+    arrowU.y = 30;
+
+    var arrowD = new createjs.Bitmap("/img/downarrow.png");
+    arrowD.x = 1143;
+    arrowD.y = 390;
+
+    var arrowL = new createjs.Bitmap("/img/leftarrow.png");
+    arrowL.x = 1070;
+    arrowL.y = 220;
+
+    var arrowR = new createjs.Bitmap("/img/rightarrow.png");
+    arrowR.x = 1220;
+    arrowR.y = 220;
+   
+    var txt = new createjs.Text("shoot", "25px Arial", "white");
+    txt.x = 1140;
+    txt.y = 540;
+
+
+
+
+
+
     stage.addChild(bg);
     startSeite.addChild(start);
     startSeite.addChild(outline1);
@@ -378,7 +449,17 @@ function init(){
     stage.addChild(startSeite);
     stage.addChild(playSeite);
 
- 
+    playSeite.addChild(outline);
+    playSeite.addChild(up);
+    playSeite.addChild(down);
+    playSeite.addChild(left);
+    playSeite.addChild(shoot);
+    playSeite.addChild(right);
+    playSeite.addChild(arrowU);
+    playSeite.addChild(arrowD); 
+    playSeite.addChild(arrowR);
+    playSeite.addChild(arrowL); 
+    playSeite.addChild(txt); 
 
 
 

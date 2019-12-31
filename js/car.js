@@ -15,7 +15,7 @@ function init(){
     txt3.y = 65;
 
     var back = new createjs.Bitmap("/img/left.png");
-    back.x = 1400;
+    back.x = 1250;
     back.y = 10;
     back.addEventListener("click",function(e){
        window.location.href= "/html/tree.html";
@@ -47,14 +47,71 @@ function init(){
     park5.y = 330;
 
 
-    var man = new createjs.Bitmap("/img/man.png");
-    man.x = 1200;
-    man.y = 550;
+    var man = new createjs.Bitmap("/img/boy.png");
+    man.x = 1400;
+    man.y = 150;
     man.addEventListener("click",function(e){
         swal("Spielregeln","Hi, ich bin Herr Hermann, kannst du mein Auto in der richtige Platz parken ? und nicht vergessen, bevor du startest, waehlen ein Mode aus");
     });
 
+// keyboard
+     var outline = new createjs.Shape();
+    outline.graphics.beginStroke('#696969').drawRect(0,0,402,502);
+    outline.x= 1170;
+    outline.y = 350;
+   
+    var up = new createjs.Shape();
+    up.graphics.beginFill("#DCDCDC").drawRect(0, 0, 400,120);
+    up.x = 1171;
+    up.y = 351;
+    up.addEventListener("click",function(e){
+        img.src = "/img/cartop.png";
+        car.y -= 30;
+        checkPosition(car.x,car.y);
+    });
+    var down = new createjs.Shape();
+    down.graphics.beginFill("#D3D3D3").drawRect(0, 0, 400,120);
+    down.x = 1171;
+    down.y = 731;
+    down.addEventListener("click",function(e){
+        img.src = "/img/cardown.png";
+        car.y += 30;
+        checkPosition(car.x,car.y);
+    });
+    var left = new createjs.Shape();
+    left.graphics.beginFill("#A9A9A9").drawRect(0, 0, 200,260);
+    left.x = 1171;
+    left.y = 471;
+    left.addEventListener("click",function(e){
+        img.src = "/img/carleft.png";
+        car.x -= 30;
+        checkPosition(car.x,car.y);
+    });
+    var right = new createjs.Shape();
+    right.graphics.beginFill("#C0C0C0").drawRect(0, 0, 200,260);
+    right.x = 1371;
+    right.y = 471;
+    right.addEventListener("click",function(e){
+        img.src = "/img/carright.png";
+        car.x += 30;
+        checkPosition(car.x,car.y);
+    });
 
+    var arrowU = new createjs.Bitmap("/img/uparrow.png");
+    arrowU.x = 1335;
+    arrowU.y = 380;
+
+    var arrowD = new createjs.Bitmap("/img/downarrow.png");
+    arrowD.x = 1335;
+    arrowD.y = 760;
+
+    var arrowL = new createjs.Bitmap("/img/leftarrow.png");
+    arrowL.x = 1240;
+    arrowL.y = 550;
+
+    var arrowR = new createjs.Bitmap("/img/rightarrow.png");
+    arrowR.x = 1420;
+    arrowR.y = 550;
     var img = new Image();
     img.src = "/img/cartop.png";
     var car = new createjs.Bitmap(img);
@@ -176,8 +233,8 @@ function init(){
     ob.visible = true;
     var a =1, b=1, c=1;
     var easy = new createjs.Bitmap("/img/easy.jpg");
-    easy.x = 1300;
-    easy.y = 100;
+    easy.x = 1250;
+    easy.y = 150;
     easy.addEventListener("click",function(e){
         a = 1;
         b = 2;
@@ -188,8 +245,8 @@ function init(){
         rock.visible = false;
     });
     var medium = new createjs.Bitmap("/img/medium.jpg");
-    medium.x = 1300;
-    medium.y = 250;
+    medium.x = 1250;
+    medium.y = 200;
     medium.addEventListener("click",function(e){
         a =2;
         b= 1;
@@ -202,8 +259,8 @@ function init(){
         rock.visible = false;
     });
     var hard = new createjs.Bitmap("/img/hard.jpg");
-    hard.x = 1300;
-    hard.y = 400;
+    hard.x = 1250;
+    hard.y = 250;
     hard.addEventListener("click",function(e){
         a=2;
         b = 2;
@@ -219,6 +276,16 @@ function init(){
 
     stage.addChild(park);
     stage.addChild(back);
+    stage.addChild(outline);
+    stage.addChild(up);
+    stage.addChild(down);
+    stage.addChild(left);
+    stage.addChild(right);
+    stage.addChild(arrowU);
+    stage.addChild(arrowD); 
+    stage.addChild(arrowR);
+    stage.addChild(arrowL); 
+  
     stage.addChild(park5);
     stage.addChild(park1);
     stage.addChild(park2);
