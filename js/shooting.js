@@ -123,9 +123,16 @@ function init(){
 
       }
 
+
+      var head = new createjs.Bitmap("/img/spacehead.png");
+      head.x = 150;
+      head.y =100;
+      var note33 = new createjs.Text("Then :", "25px Courier New", "white");
+      note33.x = 300;
+      note33.y = 380;
       var start = new createjs.Bitmap("/img/start.jpg");
-      start.x = 430;
-      start.y = 250;
+      start.x = 440;
+      start.y = 420;
       start.addEventListener('click',function(e){
        gameStart();
 
@@ -181,11 +188,26 @@ function init(){
         });
     }
 */
+
+var note22 = new createjs.Text("Mode waehlen :", "25px Monospace", "white");
+note22.x = 300;
+note22.y = 270;
       var easy = new createjs.Bitmap("/img/easy.jpg");
-      easy.x = 430;
-      easy.y = 330;
+      easy.x = 340;
+      easy.y = 320;
       easy.addEventListener('click',function(e){
-          swal("game mode has changed","easy mode");
+          swal({
+            title: 'game changed to easy mode',
+            text: 'window closed after 2 second',
+            timer: 2000
+          }).then(
+            function () {},
+            function (dismiss) {
+              if(dismiss === 'timer'){
+                console.log('window closed');
+              }
+            }
+          )
           speed = 2;
       });
 
@@ -214,10 +236,21 @@ function init(){
       }
   */
       var medium = new createjs.Bitmap("/img/medium.jpg");
-      medium.x = 430;
-      medium.y = 390;
+      medium.x = 440;
+      medium.y = 320;
       medium.addEventListener('click',function(e){
-        swal("game mode has changed","medium mode");
+        swal({
+          title: 'game changed to medium mode',
+          text: 'window closed after 2 second',
+          timer: 2000
+        }).then(
+          function () {},
+          function (dismiss) {
+            if(dismiss === 'timer'){
+              console.log('window closed');
+            }
+          }
+        )
           speed = 5;
       });
       var outline3 = new createjs.Shape();
@@ -246,10 +279,21 @@ function init(){
 */
 
       var hard = new createjs.Bitmap("/img/hard.jpg");
-      hard.x = 430;
-      hard.y = 450;
+      hard.x = 540;
+      hard.y = 320;
       hard.addEventListener('click',function(e){
-        swal("game mode has changed","hard mode");
+        swal({
+          title: 'game changed to hard mode',
+          text: 'window closed after 2 second',
+          timer: 2000
+        }).then(
+          function () {},
+          function (dismiss) {
+            if(dismiss === 'timer'){
+              console.log('window closed');
+            }
+          }
+        )
           speed = 9;
       });
       var outline4 = new createjs.Shape();
@@ -276,8 +320,8 @@ function init(){
       });
       }
 */
-       var info = new createjs.Bitmap("/img/info.png");
-       info.x = 430;
+       var info = new createjs.Bitmap("/img/infooo.png");
+       info.x = 950;
        info.y = 520;
        info.addEventListener('click',function(e){
         swal("Spielregeln","Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen");
@@ -307,6 +351,18 @@ function init(){
       }
 
 */
+       var back = new createjs.Bitmap("/img/backk.png");
+    back.x = 10;
+    back.y = 10;
+    back.addEventListener("click",function(e){
+       window.location.href= "/index.html";
+    });
+    var back1 = new createjs.Bitmap("/img/backk.png");
+    back1.x = 10;
+    back1.y = 10;
+    back1.addEventListener("click",function(e){
+      location.reload();
+    });
       function randomNum(min, max){
         return Math.floor(Math.random()*(max - min)) + min;
     }
@@ -430,6 +486,10 @@ function init(){
 
 
     stage.addChild(bg);
+    startSeite.addChild(head);
+    startSeite.addChild(back);
+    startSeite.addChild(note22);
+    startSeite.addChild(note33);
     startSeite.addChild(start);
     startSeite.addChild(outline1);
     startSeite.addChild(easy);
@@ -441,6 +501,7 @@ function init(){
     startSeite.addChild(info);
     startSeite.addChild(outline5);
     playSeite.addChild(note);
+    playSeite.addChild(back1);
     playSeite.addChild(monster);
     playSeite.addChild(monster1);
     playSeite.addChild(rock);

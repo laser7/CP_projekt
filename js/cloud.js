@@ -23,9 +23,9 @@ function init(){
         } 
     }
 
-    var start = new createjs.Bitmap("/img/start1.png");
+    var start = new createjs.Bitmap("/img/start1.jpg");
     start.x = 1200;
-    start.y = 50;
+    start.y = 75;
     start.addEventListener('click',function(e){
         var timer = window.setInterval(candy1Move,500);
         var timer1 = window.setInterval(candyMove,500);

@@ -296,7 +296,7 @@
         rabbit.x = 1280;
         rabbit.y = 430;
         rabbit.addEventListener("click",function(e){
-            window.location.href= "/html/windmill.html";
+            window.location.href= "/html/race.html";
         });
     
         
@@ -330,6 +330,12 @@
         window.location.href= "/html/cloud.html";
     });
 
+    var back = new createjs.Bitmap("/img/arrow.png");
+    back.x =20;
+    back.y = 20;
+    back.addEventListener('click',function(e){
+        window.location.href= "/index.html";
+    });
 
 
         stage.addChild(bg);
@@ -361,6 +367,7 @@
         stage.addChild(read);
         stage.addChild(park);
         stage.addChild(cloud);
+        stage.addChild(back);
  
         createjs.Ticker.setFPS(60);
         createjs.Ticker.addEventListener('tick',update);

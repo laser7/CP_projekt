@@ -40,6 +40,12 @@
         }
       }
               
+      var back = new createjs.Bitmap("/img/left.png");
+      back.x = 10;
+      back.y = 10;
+      back.addEventListener("click",function(e){
+         window.location.href= "/index.html";
+      });
       var dataSonic = new createjs.SpriteSheet({
         "images": ["/img/sonic.png"],
         "frames": {"regX": 0, "height": 64, "count": 9, "regY": 0, "width": 64},
@@ -50,14 +56,17 @@
         }
       });
       sonicHead = new createjs.Sprite(dataSonic, "straight");  
-      sonicHead.x = 450;
-      sonicHead.y = 230;
-      var head = new createjs.Bitmap("/img/head.png");
-      head.x = 180;
-      head.y = 100;
+      sonicHead.x = 420;
+      sonicHead.y = 190;
+      var head = new createjs.Bitmap("/img/sonichead1.png");
+      head.x = 150;
+      head.y = 60;
+      var note22 = new createjs.Text("Mode waehlen :", "25px Monospace", "black");
+      note22.x = 400;
+      note22.y = 300;
         var start = new createjs.Bitmap("/img/start.jpg");
         start.x = 550;
-        start.y = 350;
+        start.y = 450;
         start.addEventListener("click",function(e){
         
        
@@ -71,8 +80,14 @@
        stage.addChild(pipe2);
        stage.addChild(pipe3);  
        
-       var flyTimer = window.setInterval(fly,24);
-       var pipeTimer = window.setInterval(pipeMove,60);
+       if(einfach == 0 && schwer == 1){
+        var flyTimer = window.setInterval(fly,24);
+        var pipeTimer = window.setInterval(pipeMove,60);
+       } else if ( einfach ==1 && schwer == 0){
+        var flyTimer = window.setInterval(fly,40);
+        var pipeTimer = window.setInterval(pipeMove,100);
+       } 
+      
        var scoreTimer = window.setInterval(showScore,50);
     //   var crashTimer = window.setInterval(crashTest,60);
      
@@ -132,7 +147,7 @@
         }
 
         function fly(){
-          sonicN.y = 200;
+          sonicN.y = 300;
           sonicN.y+= sonicN.speed;
 
           sonicN.speed+=4;
@@ -391,7 +406,7 @@
      
         }
         var score = 0;
-        var note = new createjs.Text("score: 0", "25px Arial", "black");
+        var note = new createjs.Text("score: 0", "25px Monospace", "black");
         note.x =100;
         note.y = 100;
         function showScore(){
@@ -423,13 +438,64 @@
           }
         }
 
+  // mode wahlen
+
+  var note33 = new createjs.Text("Then :", "25px Monospace", "black");
+  note33.x = 420;
+  note33.y = 410;
+
+  var einfach, schwer = 0;
+  var easy = new createjs.Bitmap("/img/easy.jpg");
+  easy.x = 550;
+  easy.y = 350;
+  easy.addEventListener('click',function(e){
+      swal({
+        title: 'game changed to easy mode',
+        text: 'window closed after 2 second',
+        timer: 2000
+      }).then(
+        function () {},
+        function (dismiss) {
+          if(dismiss === 'timer'){
+            console.log('window closed');
+          }
+        }
+      )
+
+   einfach = 1;
+   schwer = 0;
+    
+  });
   
-  
+  var hard = new createjs.Bitmap("/img/hard.jpg");
+  hard.x = 650;
+  hard.y = 350;
+  hard.addEventListener('click',function(e){
+    swal({
+      title: 'game changed to hard mode',
+      text: 'window closed after 2 second',
+      timer: 2000
+    }).then(
+      function () {},
+      function (dismiss) {
+        if(dismiss === 'timer'){
+          console.log('window closed');
+        }
+      }
+    )
+    einfach = 0;
+    schwer = 1;
+  });
         
         stage.addChild(bg);
         stage.addChild(bottom);
         stage.addChild(bottom2);
+        stage.addChild(back);
         startSeite.addChild(start);
+        startSeite.addChild(note22);
+        startSeite.addChild(note33);
+        startSeite.addChild(easy);
+        startSeite.addChild(hard);
         startSeite.addChild(head);
         startSeite.addChild(sonicHead);
         startSeite.addChild(t);
