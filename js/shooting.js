@@ -127,8 +127,8 @@ function init(){
       var head = new createjs.Bitmap("/img/spacehead.png");
       head.x = 150;
       head.y =100;
-      var note33 = new createjs.Text("Then :", "25px Courier New", "white");
-      note33.x = 300;
+      var note33 = new createjs.Text("Dann :", "25px Courier New", "white");
+      note33.x = 250;
       note33.y = 380;
       var start = new createjs.Bitmap("/img/start.jpg");
       start.x = 440;
@@ -189,8 +189,8 @@ function init(){
     }
 */
 
-var note22 = new createjs.Text("Mode waehlen :", "25px Monospace", "white");
-note22.x = 300;
+var note22 = new createjs.Text("Wählen Sie zuerst eine Mode aus :", "25px Monospace", "white");
+note22.x = 250;
 note22.y = 270;
       var easy = new createjs.Bitmap("/img/easy.jpg");
       easy.x = 340;

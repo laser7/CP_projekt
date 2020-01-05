@@ -1,6 +1,11 @@
 var stage;
 function init(){
+
     stage = new createjs.Stage("canvas");
+
+    var bg = new createjs.Bitmap("/img/bg99.svg");
+    bg.x = 0;
+    bg.y = 0;
     var txt = new createjs.Text("Klein", "25px Arial", "black");
     txt.x = 300;
     txt.y = 65;
@@ -15,7 +20,7 @@ function init(){
     txt3.y = 65;
 
     var back = new createjs.Bitmap("/img/left.png");
-    back.x = 1250;
+    back.x = 1480;
     back.y = 10;
     back.addEventListener("click",function(e){
        window.location.href= "/html/tree.html";
@@ -273,7 +278,7 @@ function init(){
         rock.visible = true;
     });
 
-
+    stage.addChild(bg);
     stage.addChild(park);
     stage.addChild(back);
     stage.addChild(outline);

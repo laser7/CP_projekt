@@ -3,9 +3,10 @@
     function init(){
         stage = new createjs.Stage("canvas");
  
-      //  var tree = new createjs.Bitmap("/img/apple.png");
-     //   tree.x = 50;
-     //   tree.y = 150;
+        var bg = new createjs.Bitmap("/img/bg33.svg");
+        bg.x = 0;
+        bg.y = 0;
+
      var temp;
  
         var r = ['book', 'sun', 'cow', 'write', 'mouth','cup', 'fish','hundred','earth', 'clock', 'computer', 'robot','goat','lion','grapes','banana'];
@@ -53,11 +54,13 @@
       
 
          var back = new createjs.Bitmap("/img/left.png");
-         back.x = 1000;
+         back.x = 1300;
          back.y = 10;
          back.addEventListener("click",function(e){
             window.location.href= "/html/tree.html";
          });
+
+        stage.addChild(bg);
         stage.addChild(txt);
         stage.addChild(rightAn);
         stage.addChild(false1);

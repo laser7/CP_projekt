@@ -2,6 +2,11 @@ var stage;
 function init(){
     stage = new createjs.Stage("canvas");
    
+
+    var bg = new createjs.Bitmap("/img/bg99.svg");
+    bg.x = 0;
+    bg.y = 0;
+
     var img = new Image();
     img.src = "/img/shopright.png";
     var shop = new createjs.Bitmap(img);
@@ -23,9 +28,9 @@ function init(){
         } 
     }
 
-    var start = new createjs.Bitmap("/img/start1.jpg");
+    var start = new createjs.Bitmap("/img/startL.png");
     start.x = 920;
-    start.y = 75;
+    start.y = 80;
     start.addEventListener('click',function(e){
         var timer = window.setInterval(candy1Move,500);
         var timer1 = window.setInterval(candyMove,500);
@@ -171,14 +176,14 @@ function init(){
 
     var back = new createjs.Bitmap("/img/left.png");
     back.x = 1100;
-    back.y = 200;
+    back.y = 220;
     back.addEventListener("click",function(e){
        window.location.href= "/html/tree.html";
     });
    
     var note = new createjs.Text("score: 0", "25px Arial", "black");
-    note.x = 1080;
-    note.y = 80;
+    note.x = 920;
+    note.y = 340;
     function showScore(){
       
       note.text = "Score: "+ Math.floor(score/3);
@@ -192,7 +197,7 @@ function init(){
 
     var info = new createjs.Bitmap("/img/information.png");
     info.x = 920;
-    info.y = 200;
+    info.y = 220;
     info.addEventListener("click",function(e){
         swal("SpielRegeln","avoid the bombs and get more score!");
     });
@@ -221,7 +226,7 @@ function init(){
     arrowR.y = 500;
 
 
-
+    stage.addChild(bg);   
     stage.addChild(start);   
     stage.addChild(shop);
   

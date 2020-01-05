@@ -61,8 +61,8 @@
       var head = new createjs.Bitmap("/img/sonichead1.png");
       head.x = 150;
       head.y = 60;
-      var note22 = new createjs.Text("Mode waehlen :", "25px Monospace", "black");
-      note22.x = 400;
+      var note22 = new createjs.Text("Wählen Sie zuerst eine Mode aus :", "25px Monospace", "black");
+      note22.x = 350;
       note22.y = 300;
         var start = new createjs.Bitmap("/img/start.jpg");
         start.x = 550;
@@ -440,8 +440,8 @@
 
   // mode wahlen
 
-  var note33 = new createjs.Text("Then :", "25px Monospace", "black");
-  note33.x = 420;
+  var note33 = new createjs.Text("Dann :", "25px Monospace", "black");
+  note33.x =370;
   note33.y = 410;
 
   var einfach, schwer = 0;

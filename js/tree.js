@@ -296,7 +296,14 @@
         rabbit.x = 1280;
         rabbit.y = 430;
         rabbit.addEventListener("click",function(e){
-            window.location.href= "/html/race.html";
+            Seite.visible = false;
+       
+            var timerS = setInterval(logoMove, 500);
+            var timerl = setInterval(loadMove, 500);
+            loadSeite.visible = true;
+            inhalt.text = "Sie werden die Rolle eines Kaninchens spielen, um gegen die Schildkröte anzutreten. Klicken Sie auf den Startknopf, um das Spiel zu starten, beschleunigen Sie das Kaninchen mit der linken Maustaste/ Leertaste der Tastatur! ";
+    
+            setTimeout(jumpToRace,10000);
         });
     
         
@@ -307,7 +314,14 @@
        read.x = 500;
        read.y = 610;
        read.addEventListener("click",function(e){
-        window.location.href= "/html/bulb.html";
+        Seite.visible = false;
+       
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text = "Wählen Sie das entsprechende Bild gemäß der englischen Wortmeldung";
+
+        setTimeout(jumpToRead,10000);
     });
 
     var park = new createjs.Bitmap("/img/car22.png");
@@ -315,7 +329,14 @@
     park.y = 410;
    
     park.addEventListener("click",function(e){
-     window.location.href= "/html/car.html";
+        Seite.visible = false;
+       
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text = "Bitte helfen Sie Herr Hermann, das Auto am richtigen Ort abzustellen. Sie können auch einen Modus auswählen, bevor Sie beginnen. Vermeiden Sie Hindernisse und erledigen Sie die parkaufgabe! ";
+
+        setTimeout(jumpToCar,10000);
  });
 
 
@@ -327,9 +348,17 @@
     cloud.x = 975;
     cloud.y = -5;
     cloud.addEventListener("click",function(e){
-        window.location.href= "/html/cloud.html";
+        Seite.visible = false;
+       
+            var timerS = setInterval(logoMove, 500);
+            var timerl = setInterval(loadMove, 500);
+            loadSeite.visible = true;
+            inhalt.text = "Klicken Sie auf die Startknopf, um das Spiel zu starten. Sie können die linke/ rechte Tastaturtaste verwenden oder Maus auf die virtuelle Tastatur in der unteren rechten Ecke zu klicken, um die Bewegung des Charakters nach links/ rechts zu steuern. Punkte werden abgezogen, wenn Sie eine Bombe erhalten. Versuchen Sie Bomben zu vermeiden, um hohe Punktzahlen zu erzielen!";
+    
+            setTimeout(jumpToCloud,10000);
     });
 
+    
     var back = new createjs.Bitmap("/img/arrow.png");
     back.x =20;
     back.y = 20;
@@ -338,36 +367,107 @@
     });
 
 
-        stage.addChild(bg);
-        stage.addChild(donate);
-        stage.addChild(tree);
-        stage.addChild(tree1);
-        stage.addChild(tree2);
-        stage.addChild(tree3);
-        stage.addChild(rabbit);
+    // jump to page function
+    
+    function jumpToRead(){
+        window.location.href= "/html/bulb.html";
+    }
+    function jumpToCloud(){
+        window.location.href= "/html/cloud.html";
+    }
+    function jumpToCar(){
+        window.location.href= "/html/car.html";
+    }
+    function jumpToRace(){
+        window.location.href= "/html/race.html";
+    }
+   // normal seite
+   var Seite = new createjs.Container;
+   // while loading 
+   var loadSeite = new createjs.Container;
 
-        stage.addChild(apple);
-        stage.addChild(app2);
-        stage.addChild(app3);
-        stage.addChild(app4);
-        stage.addChild(app5);
-        stage.addChild(app6);
-        stage.addChild(app7);
-        stage.addChild(app8);
-        stage.addChild(app9);
-        stage.addChild(app10);
-        stage.addChild(app11);
-        stage.addChild(app12);
-        stage.addChild(app13);
-        stage.addChild(app14);
-        stage.addChild(app15);
+   var loadbg = new createjs.Bitmap("/img/bg99.svg");
+   loadbg.x = 0;
+   loadbg.y = 0;
+
+   var logo = new createjs.Bitmap("/img/explore.png");
+   logo.x = 30;
+   logo.y = 700;
+
+   function logoMove(){
+       logo.x += 75;
+      
+
+   }
+
+   var num = 0;
+   var load = new createjs.Text("0", "25px Monospace","white");
+   load.x = -200;
+   load.y = 735;
+
+   var loadRect =  new createjs.Shape();
+   loadRect.graphics.beginFill("black").drawRect(0, 0, 1500, 80);
+   loadRect.x = -1500;
+   loadRect.y = 700;
+  
+   function loadMove(){
+       load.x += 75;
+       num+=5;
+       loadRect.x+= 75;
+       load.text = "loading..."+ num + "%";
+      
+   }
+   var note = new createjs.Text("Spielregeln", "50px Times","black");
+   note.x = 600;
+   note.y = 170;
+   var inhalt = new createjs.Text("inhalt", "25px Monospace","black");
+   inhalt.x = 300;
+   inhalt.y = 340;
+   inhalt.lineWidth = 1000;
+   inhalt.lineHeight = 50;
+
+        loadSeite.addChild(loadbg);
+        loadSeite.addChild(logo);
+        loadSeite.addChild(loadRect);
+        loadSeite.addChild(load);
+    
+        loadSeite.addChild(note);
+        loadSeite.addChild(inhalt);
+        loadSeite.visible = false;
+        
+        Seite.addChild(bg);
+        Seite.addChild(donate);
+        Seite.addChild(tree);
+        Seite.addChild(tree1);
+        Seite.addChild(tree2);
+        Seite.addChild(tree3);
+        Seite.addChild(rabbit);
+
+        Seite.addChild(apple);
+        Seite.addChild(app2);
+        Seite.addChild(app3);
+        Seite.addChild(app4);
+        Seite.addChild(app5);
+        Seite.addChild(app6);
+        Seite.addChild(app7);
+        Seite.addChild(app8);
+        Seite.addChild(app9);
+        Seite.addChild(app10);
+        Seite.addChild(app11);
+        Seite.addChild(app12);
+        Seite.addChild(app13);
+        Seite.addChild(app14);
+        Seite.addChild(app15);
 
       
 
-        stage.addChild(read);
-        stage.addChild(park);
-        stage.addChild(cloud);
-        stage.addChild(back);
+        Seite.addChild(read);
+        Seite.addChild(park);
+        Seite.addChild(cloud);
+        Seite.addChild(back);
+
+        stage.addChild(Seite);
+        stage.addChild(loadSeite);
  
         createjs.Ticker.setFPS(60);
         createjs.Ticker.addEventListener('tick',update);

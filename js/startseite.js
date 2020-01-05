@@ -1,11 +1,12 @@
-
+// Ö/ö  Ü/ü Ä/ä ß
 var stage;
 function init(){
     canvas = document.getElementById("canvas");
-    
-   
-    
     stage = new createjs.Stage('canvas');
+
+    var bg = new createjs.Bitmap("/img/whitebg.jpg");
+    bg.x = 0;
+    bg.y = 0;
    
     var rect1 = new createjs.Shape();
     rect1.graphics.beginFill(" #ebf5fb ").drawRect(0, 0, 400, 400);
@@ -13,7 +14,12 @@ function init(){
     rect1.y =50;
 
     rect1.addEventListener("click",function(e){
-        window.location.href= "/html/tree.html";
+        Seite.visible = false;
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text= "Klicken Sie mit der linken Maustaste, um Ereignisse zu untersuchen, die in der Szene ausgelöst werden können!             Hinweise: Auto, Baum, Hase, Wolke, lesen";
+        setTimeout(jumpToTree,10000);
     });
 
    
@@ -24,7 +30,12 @@ function init(){
     rect2.y =50;
    
     rect2.addEventListener("click",function(e){
-        window.location.href= "/html/moutain.html";
+        Seite.visible = false;
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text = "Vorsicht! Zuerst Mode waehlen und dann starten. Klicken Sie mit der linken Maustaste/ Leertaste der Tastatur, um die Flughöhe des Sonic zu steuern. Vermeiden Sie Hindernisse während des Fluges. Ich wünsche die Highscores im Spiel!";
+        setTimeout(jumpToSonic,10000);
     });
 
 
@@ -35,27 +46,65 @@ function init(){
     rect3.y =50;
 
     rect3.addEventListener("click",function(e){
-        window.location.href= "/html/shooting.html";
+        Seite.visible = false;
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text = "Vorsicht! Zuerst Mode waehlen und dann starten. Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen";
+        setTimeout(jumpToShooting,10000);
     });
 
+
+    // jump function
+    function jumpToShooting(){
+        window.location.href= "/html/shooting.html";
+    }
+
+    function jumpToTree(){
+        window.location.href= "/html/tree.html";
+    }
+    function jumpToSonic(){
+        window.location.href= "/html/moutain.html";
+    }
+
+    // thema setting
 
     var thema = new createjs.Bitmap("/img/lake.png");
     thema.x = 175;
     thema.y = 130;
     thema.addEventListener("click",function(e){
-        window.location.href= "/html/tree.html";
+        Seite.visible = false;
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text= "Klicken Sie mit der linken Maustaste, um Ereignisse zu untersuchen, die in der Szene ausgelöst werden können!             Hinweise: Auto, Baum, Hase, Wolke, lesen";
+        setTimeout(jumpToTree,10000);
     });
     var thema2 = new createjs.Bitmap("/img/fly.png");
     thema2.x = 625;
     thema2.y = 130;
     thema2.addEventListener("click",function(e){
-        window.location.href= "/html/moutain.html";
+        Seite.visible = false;
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text ="Vorsicht! Zuerst Mode waehlen und dann starten. Klicken Sie mit der linken Maustaste/ Leertaste der Tastatur, um die Flughöhe des Sonic zu steuern. Vermeiden Sie Hindernisse während des Fluges. Ich wünsche die Highscores im Spiel!";
+        setTimeout(jumpToSonic,10000);
     });
     var thema3 = new createjs.Bitmap("/img/shooting.png");
     thema3.x = 1075;
     thema3.y = 130;
     thema3.addEventListener("click",function(e){
-        window.location.href= "/html/shooting.html";
+       
+        Seite.visible = false;
+       
+        var timerS = setInterval(logoMove, 500);
+        var timerl = setInterval(loadMove, 500);
+        loadSeite.visible = true;
+        inhalt.text = " Vorsicht! Zuerst Mode waehlen und dann starten. Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen"
+
+        setTimeout(jumpToShooting,10000);
+   
     });
     var bubble= new createjs.Bitmap("/img/bubble.png");
     bubble.x = 580;
@@ -72,6 +121,8 @@ function init(){
     dialog2.x = 650;
     dialog2.y = 640;
   
+
+    // keyboard Navigation 
     var outline1 = new createjs.Shape();
     outline1.graphics.beginStroke('yellow').drawRect(0,0,400,400);
     outline1.x= 100;
@@ -137,22 +188,79 @@ function init(){
             rect1Focus();
         }
     });
+
+    // normal seite
+    var Seite = new createjs.Container;
+    // while loading 
+    var loadSeite = new createjs.Container;
+
+    var loadbg = new createjs.Bitmap("/img/bg99.svg");
+    loadbg.x = 0;
+    loadbg.y = 0;
+    var logo = new createjs.Bitmap("/img/explore.png");
+    logo.x = 30;
+    logo.y = 700;
+
+    function logoMove(){
+        logo.x += 75;
+       
+
+    }
+
+    var num = 0;
+    var load = new createjs.Text("0", "25px Monospace","white");
+    load.x = -200;
+    load.y = 735;
+
+    var loadRect =  new createjs.Shape();
+    loadRect.graphics.beginFill("black").drawRect(0, 0, 1500, 80);
+    loadRect.x = -1500;
+    loadRect.y = 700;
    
-    stage.addChild(rect1);
-    stage.addChild(outline1);
-    stage.addChild(rect2);
-    stage.addChild(outline2);
-    stage.addChild(rect3);
-    stage.addChild(outline3);
-    stage.addChild(thema);
-    stage.addChild(thema2);
-    stage.addChild(thema3);
-    stage.addChild(bubble);
-    stage.addChild(leo);
-    stage.addChild(dialog);
-    stage.addChild(dialog2);
+    function loadMove(){
+        load.x += 75;
+        num+=5;
+        loadRect.x+= 75;
+        load.text = "loading..."+ num + "%";
+       
+    }
+    var note = new createjs.Text("Spielregeln", "50px Times","black");
+    note.x = 600;
+    note.y = 170;
+    var inhalt = new createjs.Text("inhalt", "25px Monospace","black");
+    inhalt.x = 300;
+    inhalt.y = 340;
+    inhalt.lineWidth = 1000;
+    inhalt.lineHeight = 50;
+
+    
+    loadSeite.addChild(loadbg);
+    loadSeite.addChild(logo);
+    loadSeite.addChild(loadRect);
+    loadSeite.addChild(load);
+   
+    loadSeite.addChild(note);
+    loadSeite.addChild(inhalt);
+    loadSeite.visible = false;
+
+    Seite.addChild(bg);
+    Seite.addChild(rect1);
+    Seite.addChild(outline1);
+    Seite.addChild(rect2);
+    Seite.addChild(outline2);
+    Seite.addChild(rect3);
+    Seite.addChild(outline3);
+    Seite.addChild(thema);
+    Seite.addChild(thema2);
+    Seite.addChild(thema3);
+    Seite.addChild(bubble);
+    Seite.addChild(leo);
+    Seite.addChild(dialog);
+    Seite.addChild(dialog2);
 
 
+    stage.addChild(Seite);
+    stage.addChild(loadSeite);
 
     
 
