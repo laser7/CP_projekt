@@ -402,7 +402,7 @@ note22.y = 270;
         }
       }
 
-  /*    function reshow(){
+     function reshow(){
           monster.visible = true;
       }
 
@@ -414,7 +414,7 @@ note22.y = 270;
     }
     function reshow3(){
         ship.visible = true;
-    }*/
+    }
 // keyboard
    var outline = new createjs.Shape();
     outline.graphics.beginStroke('#696969').drawRect(0,0,252,601);

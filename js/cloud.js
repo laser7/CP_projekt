@@ -5,7 +5,7 @@ function init(){
     var img = new Image();
     img.src = "/img/shopright.png";
     var shop = new createjs.Bitmap(img);
-    shop.x = 400;
+    shop.x = 300;
     shop.y = 650;
    window.addEventListener('keydown',keyOper, true);
     function keyOper(e){
@@ -24,7 +24,7 @@ function init(){
     }
 
     var start = new createjs.Bitmap("/img/start1.jpg");
-    start.x = 1200;
+    start.x = 920;
     start.y = 75;
     start.addEventListener('click',function(e){
         var timer = window.setInterval(candy1Move,500);
@@ -42,21 +42,21 @@ function init(){
     var imgC = new Image();
     imgC.src = "/img/candy.png";
      var candy1 = new createjs.Bitmap(imgC);
-     candy1.x = randomNum(20,1100);
+     candy1.x = randomNum(20,800);
      candy1.y = 0;
      function candy1Move(){
 
         candy1.y += 30;
         if(candy1.y>700){
             candy1.y = 0;
-            candy1.x = randomNum(20,1100);
+            candy1.x = randomNum(20,800);
         }
     }
 
     var imgC1 = new Image();
     imgC1.src = "/img/candy1.png";
     var candy = new createjs.Bitmap(imgC1);
-    candy.x = randomNum(20,1100);
+    candy.x = randomNum(20,800);
     candy.y = -600;
 
     function candyMove(){
@@ -64,13 +64,13 @@ function init(){
         candy.y += 30;
         if(candy.y>700){
             candy.y = 0;
-            candy.x = randomNum(20,1100);
+            candy.x = randomNum(20,800);
         }
     }
     var imgC2 = new Image();
     imgC2.src = "/img/candy2.png";
     var candy2 = new createjs.Bitmap(imgC2);
-    candy2.x = randomNum(20,1100);
+    candy2.x = randomNum(20,800);
     candy2.y = -300;
 
     function candy2Move(){
@@ -78,13 +78,13 @@ function init(){
         candy2.y += 30;
         if(candy2.y>700){
             candy2.y = 0;
-            candy2.x = randomNum(20,1100);
+            candy2.x = randomNum(20,800);
         }
     }
     var imgC3 = new Image();
     imgC3.src = "/img/candy3.png";
     var candy3 = new createjs.Bitmap(imgC3);
-    candy3.x = randomNum(20,1100);
+    candy3.x = randomNum(20,800);
     candy3.y = 0;
 
     function candy3Move(){
@@ -92,7 +92,7 @@ function init(){
         candy3.y += 30;
         if(candy3.y>700){
             candy3.y = 0;
-            candy3.x = randomNum(20,1100);
+            candy3.x = randomNum(20,800);
         }
     }
 
@@ -103,26 +103,26 @@ function init(){
  // bumb
    
     var bomb = new createjs.Bitmap("/img/bomb.png");
-    bomb.x = randomNum(20,1100);
+    bomb.x = randomNum(20,800);
     bomb.y = -100;
 
     function bombMove(){
         bomb.y += 30;
         if (bomb.y > 700){
             bomb.y =0;
-            bomb.x = randomNum(20, 1100);
+            bomb.x = randomNum(20, 800);
         }
     }
 
     var bomb1 = new createjs.Bitmap("/img/bomb1.png");
-    bomb1.x = randomNum(20,1100);
+    bomb1.x = randomNum(20,800);
     bomb1.y = -400;
 
     function bomb1Move(){
         bomb1.y += 30;
         if (bomb1.y > 700){
             bomb1.y =0;
-            bomb1.x = randomNum(20, 1100);
+            bomb1.x = randomNum(20, 800);
         }
     }
 
@@ -170,14 +170,14 @@ function init(){
     }
 
     var back = new createjs.Bitmap("/img/left.png");
-    back.x = 1400;
+    back.x = 1100;
     back.y = 200;
     back.addEventListener("click",function(e){
        window.location.href= "/html/tree.html";
     });
    
     var note = new createjs.Text("score: 0", "25px Arial", "black");
-    note.x = 1380;
+    note.x = 1080;
     note.y = 80;
     function showScore(){
       
@@ -191,7 +191,7 @@ function init(){
     }
 
     var info = new createjs.Bitmap("/img/information.png");
-    info.x =1210;
+    info.x = 920;
     info.y = 200;
     info.addEventListener("click",function(e){
         swal("SpielRegeln","avoid the bombs and get more score!");
@@ -199,25 +199,25 @@ function init(){
 
 // keyboard
     var keyL = new createjs.Bitmap("/img/keyL.png");
-    keyL.x =1170;
+    keyL.x =870;
     keyL.y = 430;
     keyL.addEventListener("click",function(e){
         img.src = "/img/shopleft.png";
         shop.x -= 50;
     });
     var keyR = new createjs.Bitmap("/img/keyR.png");
-    keyR.x =1338;
+    keyR.x =1038;
     keyR.y = 430;
     keyR.addEventListener("click",function(e){
         img.src = "/img/shopright.png";
         shop.x += 50;
     });
     var arrowL = new createjs.Bitmap("/img/leftarrow.png");
-    arrowL.x = 1240;
+    arrowL.x = 940;
     arrowL.y = 500;
 
     var arrowR = new createjs.Bitmap("/img/rightarrow.png");
-    arrowR.x = 1368;
+    arrowR.x = 1068;
     arrowR.y = 500;
 
 
