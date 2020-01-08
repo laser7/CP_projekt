@@ -7,11 +7,15 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="/css/style4.css"> 
 </head>
-<body  onload="init()">
-	<img src="/img/explore1.png" alt="explore" >
+<body  onload="init()" onmousemove="mouseMove(event)" onmouseout="clearMouse()">
+	
 
     <canvas id="canvas" width ="1300" height="602"></canvas>
-   
+
+<p id="position"></p> 
+
+<p id="positiony"></p>
+
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="/js/shooting.js"> </script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -22,6 +22,7 @@ function init(){
       note.text = "Score: "+ Math.floor(score);
    
     }
+
     var target = new createjs.Bitmap("/img/target.png");
     target.x = 450;
     target.y = 450;
@@ -120,6 +121,8 @@ function init(){
           var timer2 = window.setInterval(rockMove,100);
           var timer3 = window.setInterval(shipMove,100);
           var timercScore= window.setInterval(showScore,500);
+          var timerPosition = window.setInterval(positionUpdate,100);
+         
 
       }
 
@@ -156,39 +159,10 @@ function init(){
         }
     }
 
-/*      window.addEventListener("keydown",function(e){
-        var keyID = e.keyCode ? e.keyCode :e.which;
-        if(keyID === 39){
-            startFocus();
-        }
-    });  */
-    var outline1 = new createjs.Shape();
-      outline1.graphics.beginStroke('yellow').drawRect(0,0,86,30);
-      outline1.x= 430;
-      outline1.y = 250;
-      outline1.visible = false;
 
-   /*   
-
-      function startFocus(){
-        outline1.visible = true;
-        outline2.visible = false;
-        outline3.visible = false;
-        outline4.visible = false;
-        outline5.visible = false;
-        window.addEventListener("keydown",function(e){
-            var keyID = e.keyCode ? e.keyCode :e.which;
-            if(keyID === 13){
-             gameStart();
-            } else if(keyID === 39){
-                easyFocus();
-            } else if(keyID === 37){
-                infoFocus();
-            }
-        });
-    }
-*/
-
+    window.addEventListener('click',function(e){
+      shootTest();
+    });
 var note22 = new createjs.Text("Wählen Sie zuerst eine Mode aus :", "25px Monospace", "white");
 note22.x = 250;
 note22.y = 270;
@@ -211,30 +185,7 @@ note22.y = 270;
           speed = 2;
       });
 
-      var outline2 = new createjs.Shape();
-      outline2.graphics.beginStroke('yellow').drawRect(0,0,86,30);
-      outline2.x= 430;
-      outline2.y = 330;
-      outline2.visible = false;
 
-   /*   function easyFocus(){
-        outline2.visible = true;
-        outline1.visible = false;
-        outline3.visible = false;
-        outline4.visible = false;
-
-        window.addEventListener("keydown",function(e){
-          var keyID = e.keyCode ? e.keyCode :e.which;
-          if(keyID === 13){
-            swal("game mode has changed","easy mode");
-            speed = 2;
-            
-          } else if(keyID === 39){
-              mediumFocus();
-          } 
-      });
-      }
-  */
       var medium = new createjs.Bitmap("/img/medium.jpg");
       medium.x = 440;
       medium.y = 320;
@@ -253,30 +204,7 @@ note22.y = 270;
         )
           speed = 5;
       });
-      var outline3 = new createjs.Shape();
-      outline3.graphics.beginStroke('yellow').drawRect(0,0,86,30);
-      outline3.x= 430;
-      outline3.y = 390;
-      outline3.visible = false;
 
-   /*   function mediumFocus(){
-        outline3.visible = true;
-        outline1.visible = false;
-        outline2.visible = false;
-        outline4.visible = false;
-
-        window.addEventListener("keydown",function(e){
-          var keyID = e.keyCode ? e.keyCode :e.which;
-          if(keyID === 13){
-            swal("game mode has changed","medium mode");
-            speed = 5;
-            
-          } else if(keyID === 39){
-              hardFocus();
-          } 
-      });
-      }
-*/
 
       var hard = new createjs.Bitmap("/img/hard.jpg");
       hard.x = 540;
@@ -296,30 +224,7 @@ note22.y = 270;
         )
           speed = 9;
       });
-      var outline4 = new createjs.Shape();
-      outline4.graphics.beginStroke('yellow').drawRect(0,0,86,30);
-      outline4.x= 430;
-      outline4.y = 450;
-      outline4.visible = false;
 
-  /*    function hardFocus(){
-        outline4.visible = true;
-        outline1.visible = false;
-        outline2.visible = false;
-        outline3.visible = false;
-
-        window.addEventListener("keydown",function(e){
-          var keyID = e.keyCode ? e.keyCode :e.which;
-          if(keyID === 13){
-            swal("game mode has changed","hard mode");
-            speed = 9;
-            
-          } else if(keyID === 39){
-              infoFocus();
-          } 
-      });
-      }
-*/
        var info = new createjs.Bitmap("/img/infooo.png");
        info.x = 950;
        info.y = 520;
@@ -327,30 +232,7 @@ note22.y = 270;
         swal("Spielregeln","Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen");
        });
 
-       var outline5 = new createjs.Shape();
-       outline5.graphics.beginStroke('yellow').drawRect(0,0,86,30);
-       outline5.x= 430;
-       outline5.y = 520;
-       outline5.visible = false;
 
-   /*    function infoFocus(){
-        outline5.visible = true;
-        outline1.visible = false;
-        outline2.visible = false;
-        outline3.visible = false;
-        outline4.visible = false;
-        window.addEventListener("keydown",function(e){
-          var keyID = e.keyCode ? e.keyCode :e.which;
-          if(keyID === 13){
-            swal("Spielregeln","Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen");
-            
-          } else if(keyID === 39){
-              startFocus();
-          } 
-      });
-      }
-
-*/
        var back = new createjs.Bitmap("/img/backk.png");
     back.x = 10;
     back.y = 10;
@@ -415,75 +297,22 @@ note22.y = 270;
     function reshow3(){
         ship.visible = true;
     }
-// keyboard
-   var outline = new createjs.Shape();
-    outline.graphics.beginStroke('#696969').drawRect(0,0,252,601);
-    outline.x= 1050;
-    outline.y = 0;
-   
-    var up = new createjs.Shape();
-    up.graphics.beginFill("#FFFFE0").drawRect(0, 0, 250,120);
-    up.x = 1051;
-    up.y = 1;
-    up.addEventListener("click",function(e){
-      target.y -= 40;
-    });
-    var down = new createjs.Shape();
-    down.graphics.beginFill("#EEE8AA").drawRect(0, 0, 250,120);
-    down.x = 1051;
-    down.y = 361;
-    down.addEventListener("click",function(e){
-      target.y += 40;
-    });
 
 
-    var shoot = new createjs.Shape();
-    shoot.graphics.beginFill("#F0E68C").drawRect(0, 0, 250,119);
-    shoot.x = 1051;
-    shoot.y = 481;
-    shoot.addEventListener("click",function(e){
-      shootTest();
-    });
-    var left = new createjs.Shape();
-    left.graphics.beginFill("#FFEFD5").drawRect(0, 0, 125,240);
-    left.x = 1051;
-    left.y = 121;
-    left.addEventListener("click",function(e){
-      target.x -= 50;
-    });
-    var right = new createjs.Shape();
-    right.graphics.beginFill("#FFDAB9").drawRect(0, 0, 125,240);
-    right.x = 1176;
-    right.y = 121;
-    right.addEventListener("click",function(e){
-      target.x += 50;
-    });
 
+
+
+
+    // mouse move event
+  
+
+    function positionUpdate(){
+    var mousex = document.getElementById("position").innerHTML;
+    var mousey = document.getElementById("positiony").innerHTML;
     
-    var arrowU = new createjs.Bitmap("/img/uparrow.png");
-    arrowU.x = 1143;
-    arrowU.y = 30;
-
-    var arrowD = new createjs.Bitmap("/img/downarrow.png");
-    arrowD.x = 1143;
-    arrowD.y = 390;
-
-    var arrowL = new createjs.Bitmap("/img/leftarrow.png");
-    arrowL.x = 1070;
-    arrowL.y = 220;
-
-    var arrowR = new createjs.Bitmap("/img/rightarrow.png");
-    arrowR.x = 1220;
-    arrowR.y = 220;
-   
-    var txt = new createjs.Text("shoot", "25px Arial", "white");
-    txt.x = 1140;
-    txt.y = 540;
-
-
-
-
-
+    target.x = mousex-128;
+    target.y = mousey-100;
+    }
 
     stage.addChild(bg);
     startSeite.addChild(head);
@@ -491,15 +320,15 @@ note22.y = 270;
     startSeite.addChild(note22);
     startSeite.addChild(note33);
     startSeite.addChild(start);
-    startSeite.addChild(outline1);
+
     startSeite.addChild(easy);
-    startSeite.addChild(outline2);
+
     startSeite.addChild(medium);
-    startSeite.addChild(outline3);
+
     startSeite.addChild(hard);
-    startSeite.addChild(outline4);
+
     startSeite.addChild(info);
-    startSeite.addChild(outline5);
+
     playSeite.addChild(note);
     playSeite.addChild(back1);
     playSeite.addChild(monster);
@@ -510,17 +339,8 @@ note22.y = 270;
     stage.addChild(startSeite);
     stage.addChild(playSeite);
 
-    playSeite.addChild(outline);
-    playSeite.addChild(up);
-    playSeite.addChild(down);
-    playSeite.addChild(left);
-    playSeite.addChild(shoot);
-    playSeite.addChild(right);
-    playSeite.addChild(arrowU);
-    playSeite.addChild(arrowD); 
-    playSeite.addChild(arrowR);
-    playSeite.addChild(arrowL); 
-    playSeite.addChild(txt); 
+  
+
 
 
 
@@ -533,6 +353,23 @@ note22.y = 270;
 
 function update(e){
     stage.update();
+}
+
+function mouseMove(e){
+
+  var x = e.clientX;
+  var y = e.clientY;
+
+  var coorx = x;
+  var coory = y;
+  document.getElementById("position").innerHTML = coorx;
+  document.getElementById("positiony").innerHTML = coory;
+
+}
+
+function clearMouse(){
+  document.getElementById("position").innerHTML = "";
+  document.getElementById("positiony").innerHTML = "";
 }
 
 

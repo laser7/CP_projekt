@@ -302,7 +302,9 @@
             var timerl = setInterval(loadMove, 500);
             loadSeite.visible = true;
             inhalt.text = "Sie werden die Rolle eines Kaninchens spielen, um gegen die Schildkröte anzutreten. Klicken Sie auf den Startknopf, um das Spiel zu starten, beschleunigen Sie das Kaninchen mit der linken Maustaste/ Leertaste der Tastatur! ";
-    
+            button.addEventListener('click',function(e){
+                jumpToRace();
+             });
             setTimeout(jumpToRace,10000);
         });
     
@@ -320,7 +322,9 @@
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text = "Wählen Sie das entsprechende Bild gemäß der englischen Wortmeldung";
-
+        button.addEventListener('click',function(e){
+            jumpToRead();
+         });
         setTimeout(jumpToRead,10000);
     });
 
@@ -335,7 +339,9 @@
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text = "Bitte helfen Sie Herr Hermann, das Auto am richtigen Ort abzustellen. Sie können auch einen Modus auswählen, bevor Sie beginnen. Vermeiden Sie Hindernisse und erledigen Sie die parkaufgabe! ";
-
+        button.addEventListener('click',function(e){
+            jumpToCar();
+         });
         setTimeout(jumpToCar,10000);
  });
 
@@ -354,7 +360,9 @@
             var timerl = setInterval(loadMove, 500);
             loadSeite.visible = true;
             inhalt.text = "Klicken Sie auf die Startknopf, um das Spiel zu starten. Sie können die linke/ rechte Tastaturtaste verwenden oder Maus auf die virtuelle Tastatur in der unteren rechten Ecke zu klicken, um die Bewegung des Charakters nach links/ rechts zu steuern. Punkte werden abgezogen, wenn Sie eine Bombe erhalten. Versuchen Sie Bomben zu vermeiden, um hohe Punktzahlen zu erzielen!";
-    
+            button.addEventListener('click',function(e){
+                jumpToCloud();
+             });
             setTimeout(jumpToCloud,10000);
     });
 
@@ -404,7 +412,16 @@
    var load = new createjs.Text("0", "25px Monospace","white");
    load.x = -200;
    load.y = 735;
+   var button = new createjs.Bitmap("/img/box.png");
+    
+   button.x = 1120;
+   button.y = 585;
 
+   var buttonText =  new createjs.Text("Alles klar und springen", "23px Monospace","#707376");
+   buttonText.x = 1150;
+   buttonText.y = 600;
+   buttonText.lineWidth = 230;
+   buttonText.lineHeight = 35;
    var loadRect =  new createjs.Shape();
    loadRect.graphics.beginFill("black").drawRect(0, 0, 1500, 80);
    loadRect.x = -1500;
@@ -430,6 +447,8 @@
         loadSeite.addChild(logo);
         loadSeite.addChild(loadRect);
         loadSeite.addChild(load);
+        loadSeite.addChild(button);
+        loadSeite.addChild(buttonText);
     
         loadSeite.addChild(note);
         loadSeite.addChild(inhalt);

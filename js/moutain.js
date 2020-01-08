@@ -147,7 +147,7 @@
         }
 
         function fly(){
-          sonicN.y = 300;
+          sonicN.y = 350;
           sonicN.y+= sonicN.speed;
 
           sonicN.speed+=4;

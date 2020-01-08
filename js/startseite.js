@@ -19,6 +19,9 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text= "Klicken Sie mit der linken Maustaste, um Ereignisse zu untersuchen, die in der Szene ausgelöst werden können!             Hinweise: Auto, Baum, Hase, Wolke, lesen";
+        button.addEventListener('click',function(e){
+            jumpToTree();
+         });
         setTimeout(jumpToTree,10000);
     });
 
@@ -35,6 +38,9 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text = "Vorsicht! Zuerst Mode waehlen und dann starten. Klicken Sie mit der linken Maustaste/ Leertaste der Tastatur, um die Flughöhe des Sonic zu steuern. Vermeiden Sie Hindernisse während des Fluges. Ich wünsche die Highscores im Spiel!";
+        button.addEventListener('click',function(e){
+            jumpToSonic();
+         });
         setTimeout(jumpToSonic,10000);
     });
 
@@ -51,6 +57,9 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text = "Vorsicht! Zuerst Mode waehlen und dann starten. Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen";
+        button.addEventListener('click',function(e){
+            jumpToShooting();
+         });
         setTimeout(jumpToShooting,10000);
     });
 
@@ -78,6 +87,9 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text= "Klicken Sie mit der linken Maustaste, um Ereignisse zu untersuchen, die in der Szene ausgelöst werden können!             Hinweise: Auto, Baum, Hase, Wolke, lesen";
+        button.addEventListener('click',function(e){
+            jumpToTree();
+         });
         setTimeout(jumpToTree,10000);
     });
     var thema2 = new createjs.Bitmap("/img/fly.png");
@@ -89,6 +101,9 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text ="Vorsicht! Zuerst Mode waehlen und dann starten. Klicken Sie mit der linken Maustaste/ Leertaste der Tastatur, um die Flughöhe des Sonic zu steuern. Vermeiden Sie Hindernisse während des Fluges. Ich wünsche die Highscores im Spiel!";
+        button.addEventListener('click',function(e){
+            jumpToSonic();
+         });
         setTimeout(jumpToSonic,10000);
     });
     var thema3 = new createjs.Bitmap("/img/shooting.png");
@@ -102,8 +117,12 @@ function init(){
         var timerl = setInterval(loadMove, 500);
         loadSeite.visible = true;
         inhalt.text = " Vorsicht! Zuerst Mode waehlen und dann starten. Verwenden Sie die Tasten nach oben, unten, links und rechts zu zielen, und durch die Leertaste zu schiessen"
-
+        
+        button.addEventListener('click',function(e){
+           jumpToShooting();
+        });
         setTimeout(jumpToShooting,10000);
+        
    
     });
     var bubble= new createjs.Bitmap("/img/bubble.png");
@@ -208,12 +227,24 @@ function init(){
     }
 
     var num = 0;
+  
+    var button = new createjs.Bitmap("/img/box.png");
+    
+    button.x = 1070;
+    button.y = 580;
+ 
+    var buttonText =  new createjs.Text("Alles klar und springen", "23px Monospace","#707376");
+    buttonText.x = 1090;
+    buttonText.y = 595;
+    buttonText.lineWidth = 230;
+    buttonText.lineHeight = 35;
+
     var load = new createjs.Text("0", "25px Monospace","white");
     load.x = -200;
     load.y = 735;
 
     var loadRect =  new createjs.Shape();
-    loadRect.graphics.beginFill("black").drawRect(0, 0, 1500, 80);
+    loadRect.graphics.beginFill("#4D4948").drawRect(0, 0, 1500, 80);
     loadRect.x = -1500;
     loadRect.y = 700;
    
@@ -241,6 +272,8 @@ function init(){
    
     loadSeite.addChild(note);
     loadSeite.addChild(inhalt);
+    loadSeite.addChild(button);
+    loadSeite.addChild(buttonText);
     loadSeite.visible = false;
 
     Seite.addChild(bg);
